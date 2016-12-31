@@ -1,6 +1,7 @@
 package com.example.canvaspractice
 
 import android.content.Context
+import android.content.res.TypedArray
 import android.graphics.*
 import android.util.AttributeSet
 import android.widget.ImageView
@@ -19,10 +20,23 @@ class AvartarView : ImageView {
     lateinit var borderBounds: RectF
     lateinit var textBounds: Rect
 
+    var borderWidth: Int = 0
     constructor(context: Context?) : super(context) {
 
     }
     constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+        val a: TypedArray = context!!.obtainStyledAttributes(attrs, R.styleable.AvartarView, 0, 0)
+        val borderColor = a.getColor(
+                R.styleable.AvartarView_borderColor, Color.WHITE)
+        borderWidth = a.getDimensionPixelSize(
+                R.styleable.AvartarView_borderWidth, 8)
+        val textColor = a.getColor(R.styleable.AvartarView_android_textColor, Color.WHITE)
+        val textSize = a.getDimensionPixelSize(R.styleable.AvartarView_android_textSize, 40)
+        val pressColor = a.getColor(R.styleable.AvartarView_pressColor, Color.WHITE)
+
+
+        a.recycle()
+
         backgroundPaint = Paint()
         backgroundPaint.isAntiAlias = true
         backgroundPaint.color = Color.BLUE
@@ -33,22 +47,22 @@ class AvartarView : ImageView {
         borderBounds = RectF()
         borderPaint = Paint()
         borderPaint.isAntiAlias = true
-        borderPaint.color = Color.WHITE
+        borderPaint.color = borderColor
         borderPaint.alpha = 200
         borderPaint.style = Paint.Style.STROKE
-        borderPaint.strokeWidth = 8f
+        borderPaint.strokeWidth = borderWidth.toFloat()
 
         pressPaint = Paint()
         pressPaint.isAntiAlias = true
-        pressPaint.color = Color.GREEN
+        pressPaint.color = pressColor
         pressPaint.style = Paint.Style.FILL
 
         textBounds = Rect()
 
         textPaint = Paint()
         textPaint.isAntiAlias = true
-        textPaint.color = Color.WHITE
-        textPaint.textSize = 40f
+        textPaint.color = textColor
+        textPaint.textSize = textSize.toFloat()
         textPaint.textAlign = Paint.Align.CENTER
         textPaint.getTextBounds("M", 0, 1, textBounds)
     }
@@ -57,7 +71,7 @@ class AvartarView : ImageView {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
         bounds.set(0f, 0f, measuredWidth.toFloat(), measuredHeight.toFloat())
         borderBounds.set(bounds)
-        borderBounds.inset(4f, 4f)
+        borderBounds.inset(borderWidth/2f, borderWidth / 2f)
     }
 
     override fun onDraw(canvas: Canvas?) {

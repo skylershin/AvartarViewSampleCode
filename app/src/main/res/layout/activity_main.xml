@@ -5,11 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context="com.example.canvaspractice.MainActivity">
+    android:background="@color/colorPrimaryDark"
+    tools:context="com.example.canvaspractice.MainActivity"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.example.canvaspractice.AvartarView
         android:id="@+id/avartarView"
         android:layout_width="110dp"
-        android:layout_height="110dp"/>
+        android:layout_height="110dp"
+        android:textSize="20dp"
+        android:textColor="#ffffff"
+        app:borderColor="@color/colorWhite"
+        app:borderWidth="4dp"
+        app:pressColor="@color/colorAccent"
+        />
 </FrameLayout>

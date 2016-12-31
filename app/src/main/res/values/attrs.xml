@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="AvartarView">
+        <attr name="android:textColor"/>
+        <attr name="android:textSize"/>
+        <attr name="borderColor" format="color"/>
+        <attr name="borderWidth" format="dimension"/>
+        <attr name="pressColor" format="color"/>
+    </declare-styleable>
+</resources>
