@@ -8,8 +8,8 @@
     android:background="@color/colorAccent"
     tools:context="com.example.canvaspractice.MainActivity">
 
-    <com.example.canvaspractice.CanvasTest
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
+    <com.example.canvaspractice.AvartarView
+        android:id="@+id/avartarView"
+        android:layout_width="110dp"
+        android:layout_height="110dp"/>
 </FrameLayout>
